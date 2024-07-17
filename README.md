@@ -1,1 +1,0 @@
-## West Michigan AWS User Group Static Website
