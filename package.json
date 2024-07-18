@@ -1,0 +1,30 @@
+{
+  "name": "website",
+  "version": "0.1.0",
+  "bin": {
+    "website": "bin/website.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "fix": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "20.14.2",
+    "aws-cdk": "2.147.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.4.5"
+  },
+  "dependencies": {
+    "@aws-solutions-constructs/aws-cloudfront-s3": "^2.61.0",
+    "aws-cdk-lib": "^2.149.0",
+    "constructs": "^10.0.0",
+    "prettier": "^3.3.2",
+    "source-map-support": "^0.5.21"
+  }
+}
