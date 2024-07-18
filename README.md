@@ -1,1 +1,4 @@
-## West Michigan AWS User Group Static Website
+```
+CDK_DEFAULT_ACCOUNT=123456789012 CDK_DEFAULT_REGION=us-east-1 cdk synth
+CDK_DEFAULT_ACCOUNT=123456789012 CDK_DEFAULT_REGION=us-east-1 cdk deploy
+```
