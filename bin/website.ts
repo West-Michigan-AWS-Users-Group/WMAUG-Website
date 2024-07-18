@@ -7,6 +7,6 @@ const app = new cdk.App();
 new WebsiteStack(app, "WebsiteStack", {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: 'us-east-2',
+    region: 'us-east-1',
   },
 });
