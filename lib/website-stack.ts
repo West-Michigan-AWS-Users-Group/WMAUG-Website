@@ -9,12 +9,12 @@ import {
   aws_s3_deployment,
 } from "aws-cdk-lib";
 
-interface WebsiteStackProps extends cdk.StackProps {
+interface WmaugOrgWebsiteProps extends cdk.StackProps {
   domainName?: string;
 }
 
-export class WebsiteStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: WebsiteStackProps) {
+export class WmaugOrgWebsite extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: WmaugOrgWebsiteProps) {
     super(scope, id, props);
 
     const domainName = props?.domainName || "wmaug.org";
@@ -24,15 +24,14 @@ export class WebsiteStack extends cdk.Stack {
 
     const cloudfrontOai = new aws_cloudfront.OriginAccessIdentity(
       this,
-      "cloudfront-OAI",
+      "cloudfrontOai",
       {
         comment: `OAI for ${id}`,
       },
     );
 
     const bucket = new cdk.aws_s3.Bucket(this, "bucket", {
-      websiteIndexDocument: "index.html",
-      websiteErrorDocument: "error.html",
+      bucketName: domainName,
       blockPublicAccess: cdk.aws_s3.BlockPublicAccess.BLOCK_ALL,
       publicReadAccess: false,
       autoDeleteObjects: true,
@@ -40,6 +39,7 @@ export class WebsiteStack extends cdk.Stack {
     });
 
     // Grant access to cloudfront
+    bucket.grantRead(cloudfrontOai)
     bucket.addToResourcePolicy(
       new aws_iam.PolicyStatement({
         actions: ["s3:GetObject"],
@@ -66,7 +66,7 @@ export class WebsiteStack extends cdk.Stack {
       this,
       "redirectFunction",
       {
-        functionName: "RedirectWWWToNonWWW", // Optional: if not specified, CDK will generate a unique name
+        functionName: "RedirectWWWToNonWWW",
         code: aws_cloudfront.FunctionCode.fromInline(`
         function handler(event) {
           var request = event.request;
@@ -125,7 +125,7 @@ export class WebsiteStack extends cdk.Stack {
 
     const distribution = new cdk.aws_cloudfront.Distribution(
       this,
-      "SiteDistribution",
+      "distribution",
       {
         certificate: certificate,
         defaultRootObject: "index.html",
@@ -175,6 +175,14 @@ export class WebsiteStack extends cdk.Stack {
       ),
       zone,
     });
+
+    new aws_route53.ARecord(this, "SiteAliasRecordWWW", {
+        recordName: `www.${domainName}`,
+        target: aws_route53.RecordTarget.fromAlias(
+            new aws_route53_targets.CloudFrontTarget(distribution),
+        ),
+        zone,
+        });
 
     // Deploy site contents to S3 bucket
     new aws_s3_deployment.BucketDeployment(this, `deploySiteBucket`, {

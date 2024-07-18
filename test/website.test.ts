@@ -7,7 +7,7 @@
 test("SQS Queue Created", () => {
   //   const app = new cdk.App();
   //     // WHEN
-  //   const stack = new Website.WebsiteStack(app, 'MyTestStack');
+  //   const stack = new Website.WmaugOrgWebsite(app, 'MyTestStack');
   //     // THEN
   //   const template = Template.fromStack(stack);
   //   template.hasResourceProperties('AWS::SQS::Queue', {
