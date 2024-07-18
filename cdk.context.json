@@ -2,5 +2,13 @@
   "hosted-zone:account=590183969109:domainName=wmaug.org:region=us-west-2": {
     "Id": "/hostedzone/Z100970737MQL35T76U",
     "Name": "wmaug.org."
+  },
+  "hosted-zone:account=590183969109:domainName=wmaug.org:region=us-east-1": {
+    "Id": "/hostedzone/Z100970737MQL35T76U",
+    "Name": "wmaug.org."
+  },
+  "hosted-zone:account=590183969109:domainName=wmaug.org:region=us-east-2": {
+    "Id": "/hostedzone/Z100970737MQL35T76U",
+    "Name": "wmaug.org."
   }
 }
