@@ -74,7 +74,7 @@ export class WmaugOrgWebsite extends cdk.Stack {
           var uri = request.uri;
     
           if (headers.host.value === 'www.${domainName}') {
-            var redirectLocation = 'https//${domainName}' + uri;
+            var redirectLocation = 'https://${domainName}' + uri;
             var response = {
               statusCode: 301,
               statusDescription: 'Moved Permanently',
