@@ -39,7 +39,7 @@ export class WmaugOrgWebsite extends cdk.Stack {
     });
 
     // Grant access to cloudfront
-    bucket.grantRead(cloudfrontOai)
+    bucket.grantRead(cloudfrontOai);
     bucket.addToResourcePolicy(
       new aws_iam.PolicyStatement({
         actions: ["s3:GetObject"],
@@ -74,7 +74,7 @@ export class WmaugOrgWebsite extends cdk.Stack {
           var uri = request.uri;
     
           if (headers.host.value === 'www.${domainName}') {
-            var redirectLocation = 'https//:${domainName}' + uri;
+            var redirectLocation = 'https//${domainName}' + uri;
             var response = {
               statusCode: 301,
               statusDescription: 'Moved Permanently',
@@ -177,12 +177,12 @@ export class WmaugOrgWebsite extends cdk.Stack {
     });
 
     new aws_route53.ARecord(this, "SiteAliasRecordWWW", {
-        recordName: `www.${domainName}`,
-        target: aws_route53.RecordTarget.fromAlias(
-            new aws_route53_targets.CloudFrontTarget(distribution),
-        ),
-        zone,
-        });
+      recordName: `www.${domainName}`,
+      target: aws_route53.RecordTarget.fromAlias(
+        new aws_route53_targets.CloudFrontTarget(distribution),
+      ),
+      zone,
+    });
 
     // Deploy site contents to S3 bucket
     new aws_s3_deployment.BucketDeployment(this, `deploySiteBucket`, {
