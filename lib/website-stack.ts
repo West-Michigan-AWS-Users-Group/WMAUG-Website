@@ -129,7 +129,7 @@ export class WmaugOrgWebsite extends cdk.Stack {
       {
         certificate: certificate,
         defaultRootObject: "index.html",
-        domainNames: [domainName],
+        domainNames: [domainName, `www.${domainName}`],
         minimumProtocolVersion:
           aws_cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
         errorResponses: [
