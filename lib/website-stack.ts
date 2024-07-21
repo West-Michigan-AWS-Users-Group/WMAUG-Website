@@ -69,20 +69,20 @@ export class WmaugOrgWebsite extends cdk.Stack {
         functionName: "RedirectWWWToNonWWW",
         code: aws_cloudfront.FunctionCode.fromInline(`
         function handler(event) {
-          var request = event.request;
-          var headers = request.headers;
-          var uri = request.uri;
-    
-          if (headers.host.value === 'www.${domainName}') {
-            var redirectLocation = 'https://${domainName}' + uri;
-            var response = {
-              statusCode: 301,
-              statusDescription: 'Moved Permanently',
-              headers: {'location': {value: redirectLocation}}
-            };
-            return response;
-          }
-          return request;
+            var request = event.request;
+            request.headers["x-forwarded-host"] = request.headers["host"];
+            if (request.headers["host"].value !== "${domainName}") {
+                return {
+                    statusCode: 301,
+                    statusDescription: "Moved Permanently",
+                    headers: {
+                        location: {
+                            value: "https://${domainName}" + request.uri
+                        }
+                    }
+                };
+            }
+            return request;
         }
       `),
       },
