@@ -35,7 +35,7 @@ a:hover {
   line-height: 2;
 }
 
-.newsfeed {
+#newsfeed {
   align-items: center;
   display: flex;
   flex-direction: column;
