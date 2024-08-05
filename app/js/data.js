@@ -2,7 +2,7 @@ export const newsFeedEntries = [
   {
     link: "https://wmaug.org/",
     imageAlt: "Contributors Wanted",
-    imageSrc: "assets/newsfeed/page-logo.webp",
+    imageSrc: "assets/newsfeed/wmaug-logo-new.webp.webp",
     title: "Contributors Wanted!",
     subtitle:
       "We need help with various projects, including web development, cloud engineering and documentation/app management. Join our Discord for more details.",
