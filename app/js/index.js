@@ -1,4 +1,4 @@
-import { newsFeedEntries } from './data.js';
+import { newsFeedEntries, sponsors } from './data.js';
 
 function onScroll() {
   const scrollCtrl = document.getElementById('scroll-ctrl');
@@ -51,7 +51,37 @@ function populateNewsFeed() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', populateNewsFeed);
+function populateSponsors() {
+  const sponsorsContainer = document.getElementById('sponsors-container');
+  
+  // Sort sponsors alphabetically by name
+  const sortedSponsors = [...sponsors].sort((a, b) => a.name.localeCompare(b.name));
+
+  sortedSponsors.forEach((sponsor) => {
+    const logoElement = document.createElement('img');
+    logoElement.classList.add('sponsor-logo');
+    logoElement.alt = `${sponsor.name} Logo`;
+    logoElement.src = sponsor.logo;
+
+    const nameElement = document.createElement('p');
+    nameElement.classList.add('sponsor-name');
+    nameElement.textContent = sponsor.name;
+
+    const sponsorElement = document.createElement('a');
+    sponsorElement.appendChild(logoElement);
+    sponsorElement.appendChild(nameElement);
+    sponsorElement.classList.add('sponsor');
+    sponsorElement.href = sponsor.website;
+    sponsorElement.target = '_blank';
+
+    sponsorsContainer.appendChild(sponsorElement);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  populateNewsFeed();
+  populateSponsors();
+});
 
 window.onscroll = onScroll;
 
