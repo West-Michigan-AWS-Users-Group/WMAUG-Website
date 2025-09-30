@@ -56,3 +56,36 @@ export const newsFeedEntries = [
             "Wednesday, July 24, 2024 6:00 PM to 8:00 PM EDT @ Davenport University, Grand Rapids, MI",
     },
 ];
+
+export const sponsors = [
+    {
+        name: 'Amazon Web Services (AWS)',
+        website: 'https://aws.amazon.com/',
+        logo: 'assets/sponsors/aws-logo.svg'
+    },
+    {
+        name: 'Bravo LT',
+        website: 'https://www.bravolt.com/',
+        logo: 'assets/sponsors/bravo-lt-logo.svg'
+    },
+    {
+        name: 'Davenport University',
+        website: 'https://www.davenport.edu/',
+        logo: 'assets/sponsors/davenport-logo.svg'
+    },
+    {
+        name: 'Grand Rapids Community College (GRCC)',
+        website: 'https://www.grcc.edu/',
+        logo: 'assets/sponsors/grcc-logo.svg'
+    },
+    {
+        name: 'The Factory',
+        website: 'https://www.workthefactory.com/',
+        logo: 'assets/sponsors/factory-logo.svg'
+    },
+    {
+        name: 'TLG Learning',
+        website: 'https://www.tlglearning.com/',
+        logo: 'assets/sponsors/tlg-logo.svg'
+    }
+];

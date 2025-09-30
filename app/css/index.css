@@ -49,6 +49,69 @@ a:hover {
   color: white;
 }
 
+#sponsors-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 16px 0;
+  width: 50%;
+  color: white;
+}
+
+#sponsors-section .notice {
+  border-bottom: 1px solid white;
+  font-size: 40px;
+  padding: 8px;
+  text-align: center;
+}
+
+#sponsors-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.sponsor {
+  align-items: center;
+  background-color: #161E2D;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sponsor:hover {
+  transform: scale(1.05);
+}
+
+.sponsor:nth-child(even) {
+  box-shadow: -2px -2px 10px #7b02e0, 2px 2px 10px #ffffff;
+}
+
+.sponsor:nth-child(odd) {
+  box-shadow: -2px -2px 10px #ffffff, 2px 2px 10px #460a6e;
+}
+
+.sponsor-logo {
+  border-radius: 8px;
+  height: 80px;
+  object-fit: contain;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.sponsor-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
 #newsfeed-past {
   margin-bottom: 96px;
 }
@@ -126,10 +189,27 @@ a:hover {
     height: auto;
   }
 
-  #newsfeed, #newsfeed-past {
+  #newsfeed, #newsfeed-past, #sponsors-section {
     width: 90%;
     gap: 32px;
     margin: 12px 0;
+  }
+
+  #sponsors-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sponsor {
+    padding: 16px;
+  }
+
+  .sponsor-logo {
+    height: 60px;
+  }
+
+  .sponsor-name {
+    font-size: 16px;
   }
 
   #newsfeed-past {
@@ -161,10 +241,26 @@ a:hover {
     max-width: 95%;
   }
 
-  #newsfeed, #newsfeed-past {
+  #newsfeed, #newsfeed-past, #sponsors-section {
     width: 95%;
     gap: 24px;
     margin: 8px 0;
+  }
+
+  #sponsors-container {
+    gap: 12px;
+  }
+
+  .sponsor {
+    padding: 12px;
+  }
+
+  .sponsor-logo {
+    height: 50px;
+  }
+
+  .sponsor-name {
+    font-size: 14px;
   }
 
   #newsfeed-past {
